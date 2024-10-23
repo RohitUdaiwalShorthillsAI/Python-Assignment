@@ -165,6 +165,7 @@ class MySQLStorage():
         self.conn.commit()
 
         print(f"Data saved to MySQL database")
+        self.close()
 
     def close(self):
         """Close the database connection to free up resources."""

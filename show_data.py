@@ -1,6 +1,6 @@
 from tabulate import tabulate
 
-class Show:
+class DisplayData:
     """
     Class to display extracted data including text, metadata, images, links, and tables.
     """

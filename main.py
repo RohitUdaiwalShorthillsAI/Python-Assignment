@@ -3,7 +3,7 @@ from file_loader import Loader
 from file_extractor import DataExtractor
 from storage import FileStorage
 from storage import MySQLStorage
-from show_data import Show
+from show_data import DisplayData
 
 class Main:
     """
@@ -17,7 +17,7 @@ class Main:
         self.file_path = filePath
         self.storage_type = storage_type
 
-    def main(self):
+    def run(self):
         """
         Main function to validate the file and process it.
         """
@@ -53,7 +53,7 @@ class Main:
         # Optionally display the extracted data
         ch = input("Do you want to show data(y/n) :: ")
         if ch == 'y':
-            show = Show(self.file_type, data)
+            show = DisplayData(self.file_type, data)
             show.display_extracted_data()
 
         # Save the data to file or SQL based on user choice
@@ -66,10 +66,6 @@ class Main:
         
         # Save extracted data
         storage.save()
-        
-        # Close SQL connection if using SQL storage
-        if self.storage_type == "sql":
-            storage.close()
 
 
 if __name__ == "__main__":
@@ -79,4 +75,4 @@ if __name__ == "__main__":
     
     # Create an instance and run the main process
     instance = Main(filePath, storage_type)
-    instance.main()
+    instance.run()
